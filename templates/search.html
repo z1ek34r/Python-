@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>渗透测试信息收集系统</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-image: url('http://youxi.z1ek34r.com/1.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      flex-direction: column; /* 垂直居中需要将flex-direction设置为column */
+}
+
+    .search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 45px;
+      padding: 5px 10px;
+      border: 1px solid #dfe1e5;
+      border-radius: 30px;
+      font-size: 18px;
+      outline: none;
+    }
+
+    .search-button {
+      width: 120px;
+      height: 45px;
+      border: none;
+      background-color: #4285f4;
+      color: #fff;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-left: -50px;
+    }
+
+    .search-button:hover {
+      background-color: #3367d6;
+    }
+
+    .search-select {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-select-label {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+
+    .search-select-input {
+      height: 35px;
+      margin-right: 5px;
+      outline: none;
+      border: none;
+      background: #fff;
+      border-radius: 5px;
+      padding: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .search-select-input option {
+      background: #fff;
+      color: #000;
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      text-indent: 1px;
+      text-overflow: '';
+      border: none;
+      outline: none;
+      background: url('') no-repeat;
+      background-position: right center;
+      background-size: 20px;
+      padding-right: 25px;
+    }
+
+    .search-message {
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form class="search" method="POST" action="/search" onsubmit="showMessage()">
+      <input type="text" name="domain" placeholder="输入要查询的域名:" class="search-input" />
+      <button type="submit" class="search-button">Search</button>
+      <div class="search-select">
+        <label for="search-type" class="search-select-label"></label>
+        <select id="search-type" class="search-select-input" name="type">
+          <option value="ip">ip地址</option>
+          <option value="nmap">端口扫描</option>
+          <option value="cms">CMS识别</option>
+          <option value="subdomain">子域名扫描</option>
+          <option value="catalog">目录扫描</option>
+          <option value="whois">Whois信息查询</option>
+          <option value="cdn">CDN检测</option>
+          <option value="all">全部查询</option>
+        </select>
+      </div>
+    </form>
+    <div class="search-message" id="search-message" style="display:none;margin-top:20px;text-align:center;">
+    正在查询中，请耐心等待······
+    </div>
+  </div>
+  <script>
+    function showMessage() {
+      document.getElementById('search-message').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

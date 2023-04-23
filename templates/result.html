@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+	<title>渗透测试信息收集系统</title>
+	<style>
+		body {
+			background-image: url('http://youxi.z1ek34r.com/2.jpeg');
+			background-size: cover;
+			color: #000;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 3em;
+			margin-top: 40px;
+			margin-bottom: 40px;
+			text-shadow: 2px 2px #000;
+            color: #f2f2f2;
+		}
+
+		table {
+			margin: 0 auto;
+			border-collapse: collapse;
+			box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+			width: 80%;
+		}
+
+		th {
+			background-color: #009688;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		td {
+			background-color: #f2f2f2;
+			padding: 10px;
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<h1>{{domain}}</h1>
+{#     <a href="/404"><button>结果分析</button></a>#}
+	<table>
+		<tr>
+			<th>CMS</th>
+			<td>{{ cms }}</td>
+		</tr>
+        <tr>
+			<th>CDN</th>
+			<td>{{ cdn }}</td>
+		</tr>
+		<tr>
+			<th>IP地址</th>
+			<td>{{ ip }}</td>
+		</tr>
+		<tr>
+			<th>Whois信息</th>
+            <td>
+			{% for whois in whois_list %}
+				{{ whois }}<br>
+				{% endfor %}
+            </td>
+		</tr>
+		<tr>
+			<th>端口开启情况</th>
+			<td>
+				{% for port in ports %}
+				{{ port }}<br>
+				{% endfor %}
+			</td>
+		</tr>
+		<tr>
+			<th>子域名</th>
+			<td>
+				{% for subdomain in subdomains %}
+				{{ subdomain }}<br>
+				{% endfor %}
+			</td>
+		</tr>
+		<tr>
+			<th>目录扫描</th>
+			<td>
+				{% for directory in directories %}
+				{{ directory }}<br>
+				{% endfor %}
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
